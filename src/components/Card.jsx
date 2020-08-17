@@ -1,10 +1,8 @@
-import Image from '../components/Image';
+import Image from '/@components/Image';
+
+import { stagger } from '/@utility/';
 
 const Card = ({ index, id, image, title, link, thumbnail, created, upvotes, authorUrl, author, loading }) => {
-  const stagger = (animation, duration = 1, stagger = 200, index, easing = 'ease') => {
-    return `${animation} ${duration * stagger * (index + 1)}ms ${easing}`;
-  }
-
   return (
     <div
       key={id}

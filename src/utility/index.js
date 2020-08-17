@@ -1,3 +1,5 @@
+const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+
 const isValidImageUrl = url => {
   if ((!url && typeof url !== 'string') || url.length === 0) return;
 
@@ -76,6 +78,8 @@ const truncate = (text, length = 100) => {
   return _text.length > length ? `${_text.substring(0, length)}...` : _text;
 };
 
-const pause = ms => new Promise(resolve => setTimeout(resolve, ms));
+const stagger = (animation, duration = 1, stagger = 200, index, easing = 'ease') => {
+  return `${animation} ${duration * stagger * (index + 1)}ms ${easing}`;
+}
 
-export { isValidImageUrl, getImageUrl, formatTime, truncate, pause };
+export { pause, isValidImageUrl, getImageUrl, formatTime, truncate, stagger };
