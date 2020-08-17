@@ -4,10 +4,10 @@ import axios from 'axios';
 import { isValidImageUrl, getImageUrl, formatTime, truncate, pause } from '/@utility/';
 
 const URL = {
-  CORS: 'https://cors-anywhere.herokuapp.com/',
-  BASE: 'https://www.reddit.com',
-  USER: `https://www.reddit.com/user/`,
-  API: `https://www.reddit.com/r/EarthPorn/.json`,
+  CORS: import.meta.env.VITE_CORS_URL,
+  BASE: import.meta.env.VITE_BASE_URL,
+  USER: import.meta.env.VITE_USER_URL,
+  API: import.meta.env.VITE_API_URL,
 };
 
 const useRedditApi = () => {
