@@ -1,7 +1,7 @@
-import Card from './components/Card';
-import Loader from './components/Loader';
+import Card from '/@components/Card';
+import Loader from '/@components/Loader';
 
-import useRedditApi from './hooks/useRedditApi';
+import useRedditApi from '/@hooks/useRedditApi';
 
 const App = () => {
   const [posts, loading, error] = useRedditApi();

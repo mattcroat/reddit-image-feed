@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 
-import '../css/image.css';
+import '/@css/image.css';
 
 const Image = ({ image, thumbnail, title }) => {
   const [loaded, setLoaded] = useState(false);

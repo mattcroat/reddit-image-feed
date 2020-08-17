@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 import axios from 'axios';
 
-import { isValidImageUrl, getImageUrl, formatTime, truncate, pause } from '../utility';
+import { isValidImageUrl, getImageUrl, formatTime, truncate, pause } from '/@utility/';
 
 const URL = {
   CORS: 'https://cors-anywhere.herokuapp.com/',
