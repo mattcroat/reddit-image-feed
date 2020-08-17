@@ -2,8 +2,10 @@
   "name": "reddit-image-feed",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+    "dev": "npm run build:css && vite",
+    "build": "env NODE_ENV=production npm run build:css && vite build",
+    "build:css": "postcss ./src/css/tailwind.css -o ./src/css/styles.css",
+    "clean": "rm -rf dist"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -11,6 +13,9 @@
   },
   "devDependencies": {
     "@prefresh/vite": "^0.10.0",
+    "autoprefixer": "^9.8.6",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.6.2",
     "vite": "^1.0.0-rc.1"
   }
 }
