@@ -1,7 +1,5 @@
 import { useState } from 'preact/hooks';
 
-import '/@css/image.css';
-
 const Image = ({ image, thumbnail, title }) => {
   const [loaded, setLoaded] = useState(false);
   const transition = 'transition-opacity duration-1000 ease-in';

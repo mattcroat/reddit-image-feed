@@ -1,3 +1,8 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.blur {
+  filter: blur(20px);
+  transition: filter 0.3s ease-in;
+}
