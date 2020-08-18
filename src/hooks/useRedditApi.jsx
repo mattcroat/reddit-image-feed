@@ -8,7 +8,7 @@ import {
   cleanTitle,
   truncateText,
   pause,
-} from '/@utility/';
+} from '/@utilities/';
 
 const URL = {
   CORS: import.meta.env.VITE_CORS_URL,

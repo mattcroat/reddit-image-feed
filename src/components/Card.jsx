@@ -1,6 +1,6 @@
 import Image from '/@components/Image';
 
-import { stagger } from '/@utility/';
+import { stagger } from '/@utilities/';
 
 const Card = ({
   index,
