@@ -3,6 +3,7 @@ const Loader = () => (
     <img
       class="h-1/4 w-1/4"
       src="http://samherbert.net/svg-loaders/svg-loaders/puff.svg"
+      alt=""
     />
   </div>
 );

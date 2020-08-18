@@ -9,7 +9,7 @@ const Image = ({ image, thumbnail, title }) => {
     <div class="h-64 relative overflow-hidden">
       {!loaded && (
         <img
-          class={`absolute h-full w-full object-cover blur`}
+          class="absolute h-full w-full object-cover blur"
           src={thumbnail}
           alt={title}
         />

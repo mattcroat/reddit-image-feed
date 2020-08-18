@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'preact/hooks';
 import axios from 'axios';
 
-import { isValidImageUrl, getImageUrl, formatTime, truncate, pause } from '/@utility/';
+import {
+  isValidImageUrl,
+  getImageUrl,
+  formatTime,
+  cleanTitle,
+  truncateText,
+  pause,
+} from '/@utility/';
 
 const URL = {
   CORS: import.meta.env.VITE_CORS_URL,
@@ -22,36 +29,36 @@ const useRedditApi = () => {
 
     try {
       const { data } = await axios.get(`${URL.CORS}${URL.API}`);
-      const posts = data.data.children;
+      const retrievedPosts = data.data.children;
       // const nextPage = data.data.after;
 
-      const retrievedPosts = posts.reduce((_posts, { data }) => {
-        if (isValidImageUrl(data.url)) {
+      const newPosts = retrievedPosts.reduce((structuredPosts, field) => {
+        if (isValidImageUrl(field.data.url)) {
           const post = {
-            id: data.id,
-            title: truncate(data.title, 50),
-            link: `${URL.BASE}${data.permalink}`,
-            thumbnail: data.thumbnail,
-            image: getImageUrl(data.url),
-            author: data.author.toLowerCase(),
-            authorUrl: `${URL.USER}${data.author}`,
-            created: formatTime(data.created_utc),
-            upvotes: data.ups,
+            id: field.data.id,
+            title: truncateText(cleanTitle(field.data.title), 50),
+            link: `${URL.BASE}${field.data.permalink}`,
+            thumbnail: field.data.thumbnail,
+            image: getImageUrl(field.data.url),
+            author: field.data.author.toLowerCase(),
+            authorUrl: `${URL.USER}${field.data.author}`,
+            created: formatTime(field.data.created_utc),
+            upvotes: field.data.ups,
           };
 
-          _posts.push(post);
+          structuredPosts.push(post);
         }
 
-        return _posts;
+        return structuredPosts;
       }, []);
 
-      setPosts(retrievedPosts);
+      setPosts(newPosts);
       // setNextPage(nextPage);
-      // await pause(1000);
+      await pause(1000);
       setLoading(false);
-    } catch (error) {
+    } catch (e) {
       setError(true);
-      console.error('💩', error);
+      console.error('💩', e);
     }
   }, []);
 

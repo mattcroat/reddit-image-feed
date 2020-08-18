@@ -6,9 +6,8 @@ import useRedditApi from '/@hooks/useRedditApi';
 const App = () => {
   const [posts, loading, error] = useRedditApi();
 
-  const showPosts =
-    posts &&
-    posts.map((post, index) => (
+  const showPosts = posts
+    && posts.map((post, index) => (
       <Card
         index={index}
         id={post.id}
