@@ -1,10 +1,10 @@
 import Card from '/@components/Card';
 import Loader from '/@components/Loader';
 
-import useRedditApi from '/@hooks/useRedditApi';
+import useRedditAPI from '/@hooks/useRedditAPI';
 
 const App = () => {
-  const [posts, loading, error] = useRedditApi();
+  const [posts, loading, error, setUpdatePosts] = useRedditAPI();
 
   const showPosts = posts
     && posts.map((post, index) => (
@@ -19,19 +19,19 @@ const App = () => {
         upvotes={post.upvotes}
         authorUrl={post.authorUrl}
         author={post.author}
+        lastElement={posts.length === index + 1}
+        updatePosts={setUpdatePosts}
       />
     ));
 
   return (
     <>
-      {loading && <Loader />}
       {error && 'Error! 💩'}
-      {!loading && (
-        <div class="grid md:grid-cols-3 gap-4 p-8">
-          {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
-          {showPosts}
-        </div>
-      )}
+      <div class="grid md:grid-cols-3 gap-4 p-8">
+        {/* <pre>{JSON.stringify(posts, null, 2)}</pre> */}
+        {showPosts}
+      </div>
+      {loading && <Loader />}
     </>
   );
 };
