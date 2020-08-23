@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'preact/hooks';
 
-const useObserver = (target, rootMargin = '0px', threshold = 0.1) => {
+const useObserver = (rootMargin = '0px', threshold = 0.1) => {
+  const [ref, setRef] = useState(null);
   const [intersecting, setIntersecting] = useState(false);
 
   useEffect(() => {
@@ -10,27 +11,23 @@ const useObserver = (target, rootMargin = '0px', threshold = 0.1) => {
       threshold,
     };
 
-    const handleIntersect = (entries, observerElement) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          console.log('intersecting');
-          setIntersecting(true);
-
-          if (target.current) observerElement.unobserve(target.current);
-        }
-      });
+    const handleIntersect = ([lastElement], observerElement) => {
+      if (lastElement.isIntersecting) {
+        setIntersecting(true);
+        if (ref) observerElement.unobserve(ref);
+      }
     };
 
     // defaults to viewport if no root specified
     const observer = new IntersectionObserver(handleIntersect, options);
-    if (target.current) observer.observe(target.current);
+    if (ref) observer.observe(ref);
 
     return () => {
-      if (target.current) observer.unobserve(target.current);
+      if (ref) observer.unobserve(ref);
     };
-  });
+  }, [ref, rootMargin, threshold]);
 
-  return [intersecting];
+  return [setRef, intersecting];
 };
 
 export default useObserver;
