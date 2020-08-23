@@ -1,10 +1,11 @@
+import React from '@pika/react';
+
 import Image from '/@components/Image';
 import useObserver from '/@hooks/useObserver';
 import { stagger } from '/@utilities/';
 
 const Card = ({
   index,
-  id,
   image,
   title,
   link,
@@ -25,9 +26,8 @@ const Card = ({
 
   return (
     <div
-      ref={lastElement && setRef}
-      key={id}
-      class="flex flex-col bg-gray-800 shadow-lg rounded-sm overflow-hidden mb-4"
+      ref={lastElement ? setRef : null}
+      className="flex flex-col bg-gray-800 shadow-lg rounded-sm overflow-hidden mb-4"
       style={{
         animation: `
           ${stagger('slideUp', 1, 200, index, 'ease')},
@@ -36,10 +36,10 @@ const Card = ({
       }}
     >
       <Image image={image} thumbnail={thumbnail} alt={title} />
-      <div class="p-4 mb-8">
-        <h2 class="text-xl font-bold capitalize mb-2">
+      <div className="p-4 mb-8">
+        <h2 className="text-xl font-bold capitalize mb-2">
           <a
-            class="hover:underline"
+            className="hover:underline"
             href={link}
             target="_blank"
             rel="noreferrer"
@@ -47,11 +47,11 @@ const Card = ({
             {title}
           </a>
         </h2>
-        <span class="text-gray-500">{created}</span>
+        <span className="text-gray-500">{created}</span>
       </div>
-      <div class="flex border-t border-gray-900 mt-auto p-4">
-        <span class="font-bold">▲ {upvotes}</span>
-        <a class="hover:underline ml-auto" href={authorUrl}>
+      <div className="flex border-t border-gray-900 mt-auto p-4">
+        <span className="font-bold">▲ {upvotes}</span>
+        <a className="hover:underline ml-auto" href={authorUrl}>
           u/{author}
         </a>
       </div>

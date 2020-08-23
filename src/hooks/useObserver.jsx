@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect } from '@pika/react';
 
 const useObserver = (rootMargin = '0px', threshold = 0.1) => {
   const [ref, setRef] = useState(null);

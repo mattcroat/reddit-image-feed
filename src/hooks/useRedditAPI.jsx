@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'preact/hooks';
+import { useState, useEffect } from '@pika/react';
 import axios from 'axios';
 
 import {
@@ -73,11 +73,10 @@ const useRedditAPI = () => {
   const [updatePosts, setUpdatePosts] = useState(false);
 
   const getPosts = async () => {
-    console.log('Fetching...');
     const { retrievedPosts, nextPageCode, errorMessage } = await fetchPosts(nextPage);
     if (errorMessage) return setError(true);
     nextPage = nextPageCode;
-    console.log('Next page: ', nextPage);
+
     const newPosts = formatPosts(retrievedPosts);
     setPosts((prevPosts) => ([
       ...prevPosts,

@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
-    "preact": "^10.4.7"
+    "@pika/react": "^16.13.1",
+    "@pika/react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "@prefresh/vite": "^1.0.1",
     "autoprefixer": "^9.8.6",
     "eslint": "^7.7.0",
     "eslint-config-airbnb": "^18.2.0",
@@ -22,6 +22,7 @@
     "eslint-plugin-react-hooks": "^4.1.0",
     "postcss-cli": "^7.1.1",
     "tailwindcss": "^1.7.3",
-    "vite": "^1.0.0-rc.1"
+    "vite": "^1.0.0-rc.1",
+    "vite-plugin-react": "^3.0.0"
   }
 }

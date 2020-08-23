@@ -4,7 +4,7 @@
 
 🥞 Stack
 * ⚡ Vite  
-* ⚛ Preact
+* ⚛ React
 * 🍃 Tailwind CSS
 
 📜 Install  

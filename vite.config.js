@@ -1,14 +1,14 @@
 // @ts-check
 // eslint-disable-next-line
-const preactRefresh = require('@prefresh/vite');
+const reactPlugin = require('vite-plugin-react');
 const path = require('path');
 
 /**
  * @type { import('vite').UserConfig }
  */
 const config = {
-  jsx: 'preact',
-  plugins: [preactRefresh()],
+  jsx: 'react',
+  plugins: [reactPlugin],
   alias: {
     '/@components/': path.resolve(__dirname, './src/components'),
     '/@css/': path.resolve(__dirname, './src/css'),
