@@ -1,4 +1,5 @@
 // @ts-check
+// eslint-disable-next-line
 const preactRefresh = require('@prefresh/vite');
 const path = require('path');
 
