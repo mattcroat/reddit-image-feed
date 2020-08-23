@@ -16,6 +16,8 @@ const useObserver = (rootMargin = '0px', threshold = 0.1) => {
         setIntersecting(true);
         if (ref) observerElement.unobserve(ref);
       }
+
+      setIntersecting(false);
     };
 
     // defaults to viewport if no root specified

@@ -1,7 +1,6 @@
 import React from '@pika/react';
 
 import Image from '/@components/Image';
-import useObserver from '/@hooks/useObserver';
 import { stagger } from '/@utilities/';
 
 const Card = ({
@@ -15,48 +14,39 @@ const Card = ({
   authorUrl,
   author,
   lastElement,
-  updatePosts,
-}) => {
-  const [setRef, intersecting] = useObserver();
-
-  if (intersecting) {
-    console.log('Intersecting: ', intersecting);
-    updatePosts(intersecting);
-  }
-
-  return (
-    <div
-      ref={lastElement ? setRef : null}
-      className="flex flex-col bg-gray-800 shadow-lg rounded-sm overflow-hidden mb-4"
-      style={{
-        animation: `
+  setRef,
+}) => (
+  <div
+    ref={lastElement ? setRef : null}
+    className="flex flex-col bg-gray-800 shadow-lg rounded-sm overflow-hidden mb-4"
+    style={{
+      animation: `
           ${stagger('slideUp', 1, 200, index, 'ease')},
           ${stagger('fadeIn', 2.4, 200, index, 'ease-in')}
         `,
-      }}
-    >
-      <Image image={image} thumbnail={thumbnail} alt={title} />
-      <div className="p-4 mb-8">
-        <h2 className="text-xl font-bold capitalize mb-2">
-          <a
-            className="hover:underline"
-            href={link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            {title}
-          </a>
-        </h2>
-        <span className="text-gray-500">{created}</span>
-      </div>
-      <div className="flex border-t border-gray-900 mt-auto p-4">
-        <span className="font-bold">▲ {upvotes}</span>
-        <a className="hover:underline ml-auto" href={authorUrl}>
-          u/{author}
+    }}
+  >
+    <Image image={image} thumbnail={thumbnail} alt={title} />
+    <div className="p-4 mb-8">
+      <h2 className="text-xl font-bold capitalize mb-2">
+        <a
+          className="hover:underline"
+          href={link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {title}
         </a>
-      </div>
+      </h2>
+      <span className="text-gray-500">{created}</span>
     </div>
-  );
-};
+    <div className="flex border-t border-gray-900 mt-auto p-4">
+      <span className="font-bold">▲ {upvotes}</span>
+      <a className="hover:underline ml-auto" href={authorUrl}>
+        u/{author}
+      </a>
+    </div>
+  </div>
+);
 
 export default Card;

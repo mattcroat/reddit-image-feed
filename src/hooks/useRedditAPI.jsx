@@ -66,11 +66,10 @@ const fetchPosts = async (nextPage) => {
 
 let nextPage = '';
 
-const useRedditAPI = () => {
+const useRedditAPI = (intersecting) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [updatePosts, setUpdatePosts] = useState(false);
 
   const getPosts = async () => {
     const { retrievedPosts, nextPageCode, errorMessage } = await fetchPosts(nextPage);
@@ -91,9 +90,9 @@ const useRedditAPI = () => {
     getPosts();
     setLoading(true);
     setError(false);
-  }, [updatePosts]);
+  }, [intersecting]);
 
-  return [posts, loading, error, setUpdatePosts];
+  return [posts, loading, error];
 };
 
 export default useRedditAPI;

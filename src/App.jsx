@@ -4,9 +4,11 @@ import Card from '/@components/Card';
 import Loader from '/@components/Loader';
 
 import useRedditAPI from '/@hooks/useRedditAPI';
+import useObserver from '/@hooks/useObserver';
 
 const App = () => {
-  const [posts, loading, error, setUpdatePosts] = useRedditAPI();
+  const [setRef, intersecting] = useObserver();
+  const [posts, loading, error] = useRedditAPI(intersecting);
 
   const showPosts = posts
     && posts.map((post, index) => (
@@ -22,7 +24,7 @@ const App = () => {
         authorUrl={post.authorUrl}
         author={post.author}
         lastElement={posts.length === index + 1}
-        updatePosts={setUpdatePosts}
+        setRef={setRef}
       />
     ));
 
