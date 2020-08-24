@@ -90,6 +90,14 @@ const useRedditAPI = (intersecting) => {
     getPosts();
     setLoading(true);
     setError(false);
+  }, []);
+
+  useEffect(() => {
+    if (intersecting) {
+      getPosts();
+      setLoading(true);
+      setError(false);
+    }
   }, [intersecting]);
 
   return [posts, loading, error];
