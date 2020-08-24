@@ -48,7 +48,7 @@ const formatPosts = (postsToFormat) => {
 
 const fetchPosts = async (nextPage) => {
   try {
-    const { data } = await axios.get(`${URL.CORS_THINGPROXY}${URL.API}?after=${nextPage}`);
+    const { data } = await axios.get(`${URL.CORS_ANYWHERE}${URL.API}?after=${nextPage}`);
     const retrievedPosts = data.data.children;
     const nextPageCode = data.data.after;
     return { retrievedPosts, nextPageCode };
