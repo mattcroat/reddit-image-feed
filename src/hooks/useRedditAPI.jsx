@@ -1,6 +1,7 @@
 import { useState, useEffect } from '@pika/react';
 import axios from 'axios';
 
+import URL from '/@api/';
 import {
   isValidImageUrl,
   getImageUrl,
@@ -9,13 +10,6 @@ import {
   truncateText,
   pause,
 } from '/@utilities/';
-
-const URL = {
-  CORS: import.meta.env.VITE_CORS_THINGPROXY,
-  BASE: import.meta.env.VITE_BASE_URL,
-  USER: import.meta.env.VITE_USER_URL,
-  API: import.meta.env.VITE_API_URL,
-};
 
 const formatPosts = (postsToFormat) => {
   if (!postsToFormat) return;
@@ -54,7 +48,7 @@ const formatPosts = (postsToFormat) => {
 
 const fetchPosts = async (nextPage) => {
   try {
-    const { data } = await axios.get(`${URL.CORS}${URL.API}?after=${nextPage}`);
+    const { data } = await axios.get(`${URL.CORS_THINGPROXY}${URL.API}?after=${nextPage}`);
     const retrievedPosts = data.data.children;
     const nextPageCode = data.data.after;
     return { retrievedPosts, nextPageCode };
@@ -77,10 +71,7 @@ const useRedditAPI = (intersecting) => {
     nextPage = nextPageCode;
 
     const newPosts = formatPosts(retrievedPosts);
-    setPosts((prevPosts) => ([
-      ...prevPosts,
-      ...newPosts,
-    ]));
+    setPosts((prevPosts) => [...prevPosts, ...newPosts]);
 
     await pause(1000);
     setLoading(false);

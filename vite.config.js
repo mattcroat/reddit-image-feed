@@ -14,6 +14,7 @@ const config = {
     '/@css/': path.resolve(__dirname, './src/css'),
     '/@hooks/': path.resolve(__dirname, './src/hooks'),
     '/@utilities/': path.resolve(__dirname, './src/utilities'),
+    '/@api/': path.resolve(__dirname, './src/api'),
   },
 };
 
