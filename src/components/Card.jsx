@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from '@pika/react';
+import React from '@pika/react';
 
 import Image from '/@components/Image';
 import { staggerAnimation } from '/@utilities/';
