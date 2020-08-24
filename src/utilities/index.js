@@ -56,13 +56,10 @@ const truncateText = (text, length = 100) => {
   return text.length > length ? `${text.substring(0, length)}...` : text;
 };
 
-const stagger = (
-  animation,
-  duration = 1,
-  staggerDuration = 200,
-  index,
-  easing = 'ease',
-) => `${animation} ${duration * staggerDuration * (index + 1)}ms ${easing}`;
+const staggerAnimation = (animation, duration, index, easing) => {
+  const stagger = 200;
+  return `${animation} ${duration * stagger * index}ms ${easing}`;
+}
 
 export {
   pause,
@@ -71,5 +68,5 @@ export {
   formatTime,
   cleanTitle,
   truncateText,
-  stagger,
+  staggerAnimation,
 };

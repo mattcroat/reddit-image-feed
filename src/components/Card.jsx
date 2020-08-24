@@ -1,7 +1,7 @@
-import React from '@pika/react';
+import React, { useState, useEffect } from '@pika/react';
 
 import Image from '/@components/Image';
-import { stagger } from '/@utilities/';
+import { staggerAnimation } from '/@utilities/';
 
 const Card = ({
   index,
@@ -21,8 +21,8 @@ const Card = ({
     className="flex flex-col bg-gray-800 shadow-lg rounded-sm overflow-hidden mb-4"
     style={{
       animation: `
-          ${stagger('slideUp', 1, 200, index, 'ease')},
-          ${stagger('fadeIn', 2.4, 200, index, 'ease-in')}
+          ${staggerAnimation('slideUp', 0.3, index * 0.1, 'ease')},
+          ${staggerAnimation('fadeIn', 0.3, index * 0.1, 'ease-in')}
         `,
     }}
   >
